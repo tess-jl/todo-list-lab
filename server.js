@@ -65,7 +65,6 @@ app.put('/api/todos/:id', async (req, res) => {
         const result = await client.query(`
             
         `, [/* pass in data */]);
-     
         res.json(result.rows[0]);
     }
     catch (err) {
@@ -82,7 +81,6 @@ app.delete('/api/todos/:id', async (req, res) => {
 
     try {
         const result = await client.query(`
-         
         `, [/* pass data */]);
         
         res.json(result.rows[0]);

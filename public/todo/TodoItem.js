@@ -3,26 +3,39 @@ import Component from '../Component.js';
 class TodoItem extends Component {
 
     onRender(dom) {
-        const todo = this.props.todo;
-        const onUpdate = this.props.onUpdate;
-        const onRemove = this.props.onRemove;
+        const { todo, onUpdate, onRemove } = this.props;
 
+        const inactiveButton = dom.querySelector('.inactive-button');
+        inactiveButton.addEventListener('click', () => {
+            todo.inactive = !todo.inactive;
+            onUpdate(todo);
+        });
         
+        const removeButton = dom.querySelector('.remove-button');
+        removeButton.addEventListener('click', () => {
+            const confirmed = confirm(`Are you sure you want to remove "${todo.task}"?`);
+            if (confirmed) {
+                onRemove(todo);
+            }
+        });
     }
 
     renderHTML() {
         const { todo } = this.props;
 
         return /*html*/`
-        <li class="todo-item">
-            <div class="info-container">
-                <h2>${todo.task}</h2>
-            </div>
-            <div class="complete-container">
-                <input type="checkbox" id="box" name="todo-check">
-                <label for="box">Completed</label>
-            </div>
-        </li>
+        <li class="todo-list-item">
+        <span class="${todo.inactive ? 'inactive' : ''}">${todo.task}</span>
+        <div>
+            <button class="inactive-button">
+                Make ${todo.inactive ? 'Active' : 'Inactive'}
+            </button>
+            
+            <button class="remove-button">
+                🗑
+            </button>
+        </div>
+    </li>
         `;
     }
 }
