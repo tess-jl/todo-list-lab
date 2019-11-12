@@ -103,10 +103,12 @@ class TodoApp extends Component {
 
         try {
             // get the types when this component first loads:
-            const todos = await getTodos({ showAll: true });
+            const todos = await getTodos();
+            console.log(todos, 'todos in general');
             // store on "this.state" so we can get 
             // them back for add, remove, and update:
             this.state = { todos };
+
     
             // pass the loaded types to the component:
             todoList.update({ todos });

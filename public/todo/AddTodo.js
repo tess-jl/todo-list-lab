@@ -2,16 +2,17 @@ import Component from '../Component.js';
 
 class AddTodo extends Component {
 
-    onRender(dom) {
+    onRender(form) {
         const { onAdd } = this.props;
-        const form = dom.querySelector('form');
-        const input = dom.querySelector('input[name=todo]');
         
         form.addEventListener('submit', async event => {
             event.preventDefault();
 
+            const formData = new FormData(form); 
+
             const todoTask = {
-                name: input.value
+                task: formData.get('todo'), 
+                complete: false
             };
 
             try {

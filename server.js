@@ -21,15 +21,11 @@ app.use(express.json()); // enable reading incoming json data
 
 // *** TODOS ***
 app.get('/api/todos', async (req, res) => {
-    const showAll = (req.query.show && req.query.show.toLowerCase() === 'all');
-    const where = showAll ? '' : 'WHERE inactive = FALSE';
 
     try {
         const result = await client.query(`
             SELECT *
-            FROM todos
-            ${where}
-            ORDER BY task;
+            FROM todos;
         `);
 
         res.json(result.rows);
@@ -48,11 +44,11 @@ app.post('/api/todos', async (req, res) => {
 
     try {
         const result = await client.query(`
-            INSERT INTO todos (name)
-            VALUES ($1)
+            INSERT INTO todos (task, complete)
+            VALUES ($1, $2)
             RETURNING *;
         `,
-        [todo.task]);
+        [todo.task, todo.complete]);
 
         res.json(result.rows[0]);
     }

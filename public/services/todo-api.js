@@ -19,7 +19,13 @@ export function getTodos() {
 
 export function addTodo(todo) {  
     const url = `${URL}/todos/${todo}`;
-    return fetchWithError(url);
+    return fetchWithError(url, {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(todo)
+    });
 }
 
 export function updateTodo(todo) {  
