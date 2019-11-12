@@ -12,7 +12,15 @@ test('renders html from data', assert => {
     };
 
     const expected = /*html*/`
-        
+    <li class="todo-item">
+        <div class="info-container">
+            <h2>${todo.task}</h2>
+        </div>
+        <div class="complete-container">
+            <input type="checkbox" id="box" name="todo-check">
+            <label for="box">Completed</label>
+        </div>
+    </li>  
     `;
 
     // act

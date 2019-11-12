@@ -18,16 +18,29 @@ class TodoApp extends Component {
         dom.appendChild(loading.renderDOM());
 
         // initial todo load:
-        try {
-            
-        }
-        catch (err) {
-            // display error...
-        }
-        finally {
-            loading.update({ loading: false });
-        }
+        const addTodo = new AddTodo({
+            onAdd: async type => {
+                loading.update({ loading: true });
+                // clear prior error
+                error.textContent = '';
+                try {
+                    const saved = await addTodo(todo);
 
+                    const { todos }= this.state;
+                    todos.push(saved);
+
+                    //tell component to update
+                    todoList.update({ todos });
+                }
+                catch (err) {
+                    console.log('TodoApp.js catch error: '+ err);
+                }
+                finally {
+                    loading.update({ loading: false });
+                }
+            }
+        });
+        main.appendChild(addToDo.renderDOM());
     }
 
     renderHTML() {

@@ -11,10 +11,18 @@ class TodoItem extends Component {
     }
 
     renderHTML() {
-        const todo = this.props.todo;
+        const { todo } = this.props;
 
         return /*html*/`
-            
+        <li class="todo-item">
+            <div class="info-container">
+                <h2>${todo.task}</h2>
+            </div>
+            <div class="complete-container">
+                <input type="checkbox" id="box" name="todo-check">
+                <label for="box">Completed</label>
+            </div>
+        </li>
         `;
     }
 }
