@@ -2,29 +2,35 @@ import Component from '../Component.js';
 
 class AddTodo extends Component {
 
-    onRender(form) {
-        const onAdd = this.props.onAdd;
+    onRender(dom) {
+        const { onAdd } = this.props;
+        const form = dom.querySelector('form');
+        const input = dom.querySelector('input[name=type]');
         
         form.addEventListener('submit', async event => {
             event.preventDefault();
 
+            const todoTask = {
+                name: input.value
+            };
+
             try {
-                await onAdd(catType);
-                // this only runs if no error:
+                await onAdd(todoTask);
+            
                 form.reset();
                 document.activeElement.blur();
             }
             catch (err) {
-                // nothing to do as App will show error,
-                // but will keep form from clearing...
+                //nothing to do here
             }
         });
     }
 
     renderHTML() {
         return /*html*/`
-            <form>
-                
+            <form class="type-form">
+                <input name="type" required>
+                <button>Add</button>
             </form>
         `;
     }
