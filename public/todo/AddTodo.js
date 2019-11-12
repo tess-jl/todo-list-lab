@@ -5,7 +5,7 @@ class AddTodo extends Component {
     onRender(dom) {
         const { onAdd } = this.props;
         const form = dom.querySelector('form');
-        const input = dom.querySelector('input[name=type]');
+        const input = dom.querySelector('input[name=todo]');
         
         form.addEventListener('submit', async event => {
             event.preventDefault();
@@ -28,8 +28,8 @@ class AddTodo extends Component {
 
     renderHTML() {
         return /*html*/`
-            <form class="type-form">
-                <input name="type" required>
+            <form class="todo-form">
+                <input name="todo" required>
                 <button>Add</button>
             </form>
         `;
