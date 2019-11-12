@@ -1,5 +1,6 @@
 const URL = '/api';
 
+//this is a wrapper around fetch 
 async function fetchWithError(url, options) {
     const response = await fetch(url, options);
     const data = await response.json();
@@ -17,8 +18,9 @@ export function getTodos() {
     return fetchWithError(url);
 }
 
+//make sure i'm sending along the body!!!
 export function addTodo(todo) {  
-    const url = `${URL}/todos/${todo}`;
+    const url = `${URL}/todos`;
     return fetchWithError(url, {
         method: 'POST', 
         headers: {

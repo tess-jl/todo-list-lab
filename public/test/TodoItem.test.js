@@ -12,15 +12,20 @@ test('renders html from data', assert => {
     };
 
     const expected = /*html*/`
-    <li class="todo-item">
-        <div class="info-container">
-            <h2>${todo.task}</h2>
+    <li class="todo-list-item">
+        <span class="${todo.complete ? 'inactive' : ''}">${todo.task}</span>
+        <div>
+
+            <button class="inactive-button">
+                Make ${todo.complete ? 'Active' : 'Inactive'}
+            </button>
+            
+            <button class="remove-button">
+                🗑
+            </button>
+            
         </div>
-        <div class="complete-container">
-            <input type="checkbox" id="box" name="todo-check">
-            <label for="box">Completed</label>
-        </div>
-    </li>  
+    </li>
     `;
 
     // act

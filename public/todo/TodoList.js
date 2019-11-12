@@ -7,9 +7,14 @@ class TodoList extends Component {
         const { todos, onUpdate, onRemove } = this.props;
 
         todos
-            .map(todos => new TodoItem({ todos, onUpdate, onRemove }))
+            .map(todo => new TodoItem({ todo, onUpdate, onRemove }))
             .map(todo => todo.renderDOM())
             .forEach(dom => list.appendChild(dom));
+
+        // todos.forEach(todo => {
+        //     const todoItem = new TodoItem({ todo, onUpdate, onRemove});
+        //     list.appendChild.renderDOM(); 
+        // });
     }
     renderHTML() {
         return /*html*/`

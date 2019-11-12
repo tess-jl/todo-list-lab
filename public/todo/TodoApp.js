@@ -25,12 +25,10 @@ class TodoApp extends Component {
                 error.textContent = '';
                 try {
                     const saved = await addTodo(todo);
-
-                    const { todos } = this.state;
-                    todos.push(saved);
+                    this.state.todos.push(saved);
 
                     //tell component to update
-                    todoList.update({ todos });
+                    todoList.update({ todos: this.state.todos });
                 }
                 catch (err) {
                     console.log('TodoApp.js onAdd catch error: ' + err);
@@ -104,14 +102,14 @@ class TodoApp extends Component {
         try {
             // get the types when this component first loads:
             const todos = await getTodos();
-            console.log(todos, 'todos in general');
+            
             // store on "this.state" so we can get 
             // them back for add, remove, and update:
             this.state = { todos };
 
-    
             // pass the loaded types to the component:
             todoList.update({ todos });
+
         }
         catch (err) {
             // display error
