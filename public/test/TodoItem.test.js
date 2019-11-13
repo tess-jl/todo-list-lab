@@ -1,4 +1,4 @@
-import TodoItem from '../todo-list/TodoItem.js';
+import TodoItem from '../todo/TodoItem.js';
 const test = QUnit.test;
 
 QUnit.module('Render Todo Item');
@@ -17,7 +17,7 @@ test('renders html from data', assert => {
         <div>
 
             <button class="inactive-button">
-                Make ${todo.complete ? 'Active' : 'Inactive'}
+                Make ${todo.complete ? 'Inactive' : 'Active'}
             </button>
             
             <button class="remove-button">

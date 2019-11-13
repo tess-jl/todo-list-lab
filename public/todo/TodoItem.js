@@ -29,7 +29,7 @@ class TodoItem extends Component {
             <div>
 
                 <button class="inactive-button">
-                    Make ${todo.complete ? 'Active' : 'Inactive'}
+                    Make ${todo.complete ? 'Inactive' : 'Active'}
                 </button>
                 
                 <button class="remove-button">
