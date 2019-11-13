@@ -4,7 +4,6 @@ class TodoItem extends Component {
 
     onRender(dom) {
         const { todo, onUpdate, onRemove } = this.props;
-        console.log(this.props.todo, 'this props todo');
 
         const inactiveButton = dom.querySelector('.inactive-button');
         inactiveButton.addEventListener('click', () => {

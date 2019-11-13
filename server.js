@@ -106,6 +106,7 @@ app.delete('/api/todos/:id', async (req, res) => {
         `, [id]);
         res.json(result.rows[0]);
     }
+    debugger; 
     catch (err) {
         if (err.code === '23503') {
             res.status(400).json({
