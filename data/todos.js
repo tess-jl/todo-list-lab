@@ -1,14 +1,14 @@
 module.exports = [
     {
-        task: 'Create data tables',
+        task: 'Catch up on some readings',
         complete: true
     },
     {
-        task: 'Backend todo server',
+        task: 'Learn a lot more about back end dev',
         complete: false
     },
     {
-        task: 'Frontend todo app',
+        task: 'Watch some youtube videos on how back end and front end relate',
         complete: false
     }
 ];

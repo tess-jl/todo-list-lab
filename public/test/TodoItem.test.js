@@ -17,7 +17,7 @@ test('renders html from data', assert => {
         <div>
 
             <button class="inactive-button">
-                Make ${todo.complete ? 'Inactive' : 'Active'}
+                Make ${todo.complete ? 'Active' : 'Inactive'}
             </button>
             
             <button class="remove-button">

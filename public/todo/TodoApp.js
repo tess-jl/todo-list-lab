@@ -8,7 +8,7 @@ import { getTodos, addTodo, updateTodo, removeTodo } from '../services/todo-api.
 class TodoApp extends Component {
 
     async onRender(dom) {
-        const header = new Header({ title: 'My Todos' });
+        const header = new Header({ title: 'My Alchemy homework to do list' });
         dom.prepend(header.renderDOM());
         
         const main = dom.querySelector('main');
@@ -102,7 +102,7 @@ class TodoApp extends Component {
         try {
             // get the types when this component first loads:
             const todos = await getTodos();
-            
+
             // store on "this.state" so we can get 
             // them back for add, remove, and update:
             this.state = { todos };

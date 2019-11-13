@@ -2,7 +2,7 @@ import Component from '../Component.js';
 
 class Header extends Component {
     renderHTML() {
-        const title = this.props.title || 'Todos';
+        const title = this.props.title || 'My Alchemy homework to do list';
 
         return /*html*/`
             <header>
