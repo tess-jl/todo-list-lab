@@ -18,7 +18,7 @@ export function getTodos() {
     return fetchWithError(url);
 }
 
-//make sure i'm sending along the body!!!
+//make sure i'm sending along the body because it's a post!!!
 export function addTodo(todo) {  
     const url = `${URL}/todos`;
     return fetchWithError(url, {
@@ -36,7 +36,7 @@ export function updateTodo(todo) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-        },
+        }, 
         body: JSON.stringify(todo)
     });
     
