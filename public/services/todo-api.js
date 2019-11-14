@@ -10,6 +10,11 @@ if (!token && !(location.pathname === '/' || location.pathname === '/index.html'
 
 //this is a wrapper around fetch 
 async function fetchWithError(url, options) {
+    if (token) {
+        options = options || {};
+        options.headers = options.headers || {};
+        options.headers.Authorization = token;
+    }
     const response = await fetch(url, options);
     const data = await response.json();
     if (response.ok) {
