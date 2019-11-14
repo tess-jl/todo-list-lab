@@ -11,13 +11,13 @@ async function run() {
         await client.connect();
 
         const savedUser = await Promise.all(
-            users.map( async user => {
+            users.map(async user => {
                 return client.query(`
                     INSERT INTO users (email, hash, display_name)
                     VALUES ($1, $2, $3)
                     RETURNING *;
                 `, 
-                [user.email, user.hash, user.displayName])
+                [user.email, user.hash, user.displayName]);
 
             })
         );
