@@ -48,17 +48,16 @@ app.use('/api/auth', authRoutes);
 app.use('/api', ensureAuth);
 
 // API Routes
-
-// *** TODOS ***
 app.get('/api/todos', async (req, res) => {
+    const userId = req.userId; 
 
     try {
         const result = await client.query(`
-            SELECT *
-            FROM todos;
-        `);
+            SELECT * FROM todos
+            WHERE  user_id = $1
+        `, [userId]);
 
-        res.json(result.rows);
+        res.status(200).json(result.rows);
     }
     catch (err) {
         console.log(err);
@@ -66,7 +65,6 @@ app.get('/api/todos', async (req, res) => {
             error: err.message || err
         });
     }
-
 });
 
 app.post('/api/todos', async (req, res) => {
