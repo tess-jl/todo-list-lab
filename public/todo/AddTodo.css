@@ -1,0 +1,16 @@
+.todo-form {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #aaa;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.todo-form input {
+    flex-grow: 1;
+}
+
+.todo-form input, .todo-form button {
+    font-size: 1em;
+}
